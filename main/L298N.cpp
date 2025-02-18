@@ -41,5 +41,11 @@ void L298N::setMotorASpeed(long speed){
 }
 
 void L298N::setMotorBSpeed(long speed){
-  analogWrite(enableBPin, speed);
+  long actualspeed = speed - 10;
+
+  if (actualspeed < 10) {
+    actualspeed = 0;
+  }
+
+  analogWrite(enableBPin, actualspeed);
 }
